@@ -1,0 +1,86 @@
+<div class="d-none d-md-inline">
+    <app-sidebar></app-sidebar>
+</div>
+<app-top-bar></app-top-bar>
+<div class="content">
+    <div class="mt-5">
+        <div class="col-xl-6 mx-auto">
+            <div class="card">
+                <div class="card-header px-4 py-3">
+                    <h5 class="mb-0 text-center">Add Task</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form class="row g-3 needs-validation" [formGroup]="addTaskForm" (ngSubmit)="submit()">
+                        <div class="col-md-12 form-group">
+                            <label for="taskname" class="form-label">Task Name</label>
+                            <input type="text" class="form-control" id="taskname" placeholder="Task Name"
+                                formControlName="name" (change)="keyUpEnter($event,'username')">
+                            <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+                                <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+                                <div *ngIf="f['name'].errors?.['pattern']">Enter a valid name.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="progress" class="form-label">Progress</label>
+                            <input type="number" class="form-control" id="Progress" placeholder="Enter 1 to 100"
+                                formControlName="y" min="1" max="100" (keypress)="onKeyPress($event)">
+                            <div *ngIf="f['y'].touched && f['y'].invalid" class="text-danger">
+                                <div *ngIf="f['y'].errors?.['required']">Progress is required.</div>
+                                <div *ngIf="f['y'].errors?.['pattern']">Enter a valid progress.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="fromdate" class="form-label">From Date</label>
+                            <input type="date" class="form-control" id="fromdate" placeholder="From Date"
+                                formControlName="FromDate" (change)="keyUpEnter($event,'fromDate')">
+                            <div *ngIf="f['FromDate'].touched && f['FromDate'].invalid" class="text-danger">
+                                <div *ngIf="f['FromDate'].errors?.['required']">From Date is required.</div>
+                                <div *ngIf="f['FromDate'].errors?.['pattern']">Enter a valid Date.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="todate" class="form-label">To Date</label>
+                            <input type="date" class="form-control" id="todate" placeholder="To Date"
+                                formControlName="ToDate" [min]="f['FromDate'].value" (change)="keyUpEnter($event,'ToDate')">
+                            <div *ngIf="f['ToDate'].touched && f['ToDate'].invalid" class="text-danger">
+                                <div *ngIf="f['ToDate'].errors?.['required']">To Date is required.</div>
+                                <div *ngIf="f['ToDate'].errors?.['invalidDateRange']">Enter a valid Date.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" placeholder="Description"
+                                formControlName="Description" (change)="keyUpEnter($event,'Description')">
+                            <div *ngIf="f['Description'].touched && f['Description'].invalid" class="text-danger">
+                                <div *ngIf="f['Description'].errors?.['required']">Description is required.</div>
+                                <div *ngIf="f['Description'].errors?.['pattern']">Enter a valid Description.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <label for="status" class="form-label">Status</label>
+                            <select formControlName="Status" id="Status" class="form-select" aria-label="Default select example">
+                                <option value="open">Open</option>
+                                <!-- <option value="pending">Pending</option> -->
+                                <option value="closed">Closed</option>
+                            </select>
+                            <div *ngIf="f['Status'].touched && f['Status'].invalid" class="text-danger">
+                                <div *ngIf="f['Status'].errors?.['required']">Status is required.</div>
+                                <div *ngIf="f['Status'].errors?.['pattern']">Enter a valid Status.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4 w-100" [disabled]="addTaskForm.invalid"
+                                    (click)="createTaskDetails()" *ngIf="!this.id">Submit</button>
+                                <button type="submit" class="btn btn-primary px-4 w-100" [disabled]="addTaskForm.invalid"
+                                    (click)="UpdateTaskDetails()" *ngIf="this.id">Submit</button>    
+                                <!-- <button type="reset" class="btn btn-light px-4 w-50">Reset</button> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

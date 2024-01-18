@@ -1,0 +1,11 @@
+.navbar {
+    z-index: 100;
+    background-color: #f1f1f1 !important;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.user-box {
+    cursor: pointer;
+}

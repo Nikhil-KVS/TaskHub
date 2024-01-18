@@ -1,0 +1,38 @@
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    /* height: 1000px; */
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+.desktop-flex {
+    display: flex;
+}
+
+.btn {
+    border: 1px solid black;
+}
+
+.edit {
+    --bs-btn-padding-x: 5px; 
+    --bs-btn-padding-y: 1px;
+}
+
+:host ::ng-deep .pagination > li.page-item.active > a.page-link > span {
+    display: none;
+}

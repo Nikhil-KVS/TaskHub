@@ -1,0 +1,95 @@
+<div class="d-none d-md-inline">
+    <app-sidebar></app-sidebar>
+</div>
+<app-top-bar></app-top-bar>
+<div class="content">
+    <div class="card radius-100 m-3">
+        <div class="card-header d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h6 class="mb-0">User Details</h6>
+                </div>
+            </div>
+            <!-- <select [(ngModel)]="selectedStatus" class="form-select w-25" placeholder="Search by Status"
+                (change)="filterButton(selectedStatus)">
+                <option value="" disabled selected>Select by Status</option>
+                <option *ngFor="let item of statuses" [value]="item">{{ item }}</option>
+            </select> -->
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                        <tr class="">
+                            <th>User Name</th>
+                            <th>Email ID</th>
+                            <th>Mobile Number</th>
+                            <th>User Profile</th>
+                            <th>Task Progress</th>
+                            <th>Task Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="" *ngFor="let item of userData">
+                            <td>{{ item.username }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>{{ item.mobileNumber }}</td>
+                            <td>
+                                <button class="btn edit ms-3" (click)="viewUserProfile(item?._id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                    </svg>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn edit ms-3" (click)="viewUserTasks(item?._id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-chart-infographic" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M7 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                        <path d="M7 3v4h4" />
+                                        <path d="M9 17l0 4" />
+                                        <path d="M17 14l0 7" />
+                                        <path d="M13 13l0 8" />
+                                        <path d="M21 12l0 9" />
+                                    </svg>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn edit ms-3" (click)="viewUserTaskDetails(item?._id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-report-analytics" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                                        <path
+                                            d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                        <path d="M9 17v-5" />
+                                        <path d="M12 17v-1" />
+                                        <path d="M15 17v-3" />
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-md-center justify-content-center">
+                <div class="text-md-right float-md-center pagination-rounded mt-3">
+                    <ngb-pagination [collectionSize]="usersCount" [(page)]="currentPage" [maxSize]="3"
+                        [pageSize]="dataPerPage" aria-label="Custom pagination" (pageChange)="onPageChanged($event)">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

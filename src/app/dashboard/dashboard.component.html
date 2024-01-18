@@ -1,0 +1,52 @@
+<div class="d-none d-md-inline">
+    <app-sidebar></app-sidebar>
+</div>
+<app-top-bar></app-top-bar>
+<div class="content">
+    <div class="d-flex mt-4 justify-content-end me-4" *ngIf="!(role === 'Admin')">
+        <button type="button" class="btn d-flex align-items-center mb-1" [routerLink]="['/add-task']"
+            routerLinkActive="router-link-active" a>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-1">
+                <path
+                    d="M5.99971 11.625C5.82254 11.625 5.67413 11.5651 5.55448 11.4453C5.43483 11.3255 5.375 11.1771 5.375 11V6.62496H0.999979C0.822896 6.62496 0.674465 6.56504 0.554687 6.44521C0.434896 6.32536 0.375 6.17686 0.375 5.99971C0.375 5.82254 0.434896 5.67413 0.554687 5.55448C0.674465 5.43483 0.822896 5.375 0.999979 5.375H5.375V0.99998C5.375 0.822896 5.43492 0.674459 5.55475 0.554667C5.6746 0.434889 5.8231 0.375 6.00025 0.375C6.17742 0.375 6.32583 0.434889 6.44548 0.554667C6.56513 0.674459 6.62496 0.822896 6.62496 0.99998V5.375H11C11.1771 5.375 11.3255 5.43492 11.4453 5.55475C11.5651 5.6746 11.625 5.8231 11.625 6.00025C11.625 6.17742 11.5651 6.32583 11.4453 6.44548C11.3255 6.56513 11.1771 6.62496 11 6.62496H6.62496V11C6.62496 11.1771 6.56504 11.3255 6.44521 11.4453C6.32536 11.5651 6.17686 11.625 5.99971 11.625Z"
+                    fill="#343a40">
+                </path>
+            </svg>
+            <span class="ms-1">Add Task</span>
+        </button>
+    </div>
+    <div [ngClass]="{'desktop-flex': !isMobile}">
+        <div class="col-12 col-lg-8 d-flex mt-3">
+            <div class="card radius-10 w-100 m-3">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">Tasks Overview</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-1">
+                        <div id="chart-column"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 d-flex mt-3">
+            <div class="card radius-10 w-100 m-3">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">Tasks Details</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container-2">
+                        <div id="chart-pie"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

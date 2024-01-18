@@ -1,0 +1,262 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <div class="card my-5">
+
+                <form class="card-body cardbody-color p-lg-4" [formGroup]="signupForm" (ngSubmit)="submit()">
+
+                    <div class="text-center mb-4">
+                        <h5 class="">Task Admin</h5>
+                        <p class="mb-0">Please fill the below details to create your account</p>
+                    </div>
+
+                    <div class="text-center">
+                        <img src="https://cdn.icon-icons.com/icons2/3939/PNG/512/contact_user_add_user_new_user_icon_250756.png"
+                            class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px"
+                            alt="profile">
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label for="inputUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="inputUsername" (change)="keyUpEnter($event,'username')"
+                            placeholder="enter username" formControlName="username">
+                        <div *ngIf="f['username'].touched && f['username'].invalid"
+                            class="text-danger">
+                            <div *ngIf="f['username'].errors?.['required']">Username is
+                                required.</div>
+                            <div *ngIf="f['username'].errors?.['pattern']">Enter a valid
+                                username
+                                (alphanumeric and underscore only).</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="inputEmailAddress" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmailAddress"
+                            placeholder="abc@example.com" formControlName="email">
+                        <div *ngIf="f['email'].touched && f['email'].invalid"
+                            class="text-danger">
+                            <div *ngIf="f['email'].errors?.['pattern']">Please enter a valid
+                                email.</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="inputMobile" class="form-label">Mobile</label>
+                        <input type="text" class="form-control" id="inputMobile"
+                            placeholder="9876543210" formControlName="mobileNumber"
+                            maxlength="10" (keypress)="onKeyPress($event)">
+                        <div *ngIf="f['mobileNumber'].touched && f['mobileNumber'].invalid"
+                            class="text-danger">
+                            <div *ngIf="f['mobileNumber'].errors?.['pattern']">Please enter a
+                                valid mobile number.</div>
+                        </div>
+                    </div>
+                    <div class="mb-4 form-group">
+                        <label for="Password" class="form-label">Password</label>
+                        <div class="input-group" id="show_hide_password">
+                            <input type="password" class="form-control border-end-0"
+                                id="Password" placeholder="Enter Password"
+                                formControlName="password"
+                                [type]="showPassword ? 'text' : 'password'">
+                            <!-- [(ngModel)]="password" -->
+                            <a href="javascript:;" class="input-group-text bg-transparent"
+                                (click)="toggleShowPassword()">
+                                <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!showPassword"
+                                    width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                    <path
+                                        d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" *ngIf="showPassword"
+                                    width="16" height="16" fill="currentColor"
+                                    class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588M5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                    <path
+                                        d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                                </svg>
+                            </a>
+                            <div *ngIf="f['password'].errors?.['invalidPassword'] !== null && (f['password'].touched ?? false)" class="text-danger">
+                                <!-- Show password validation error -->
+                                Password must contain at least 8 characters, including
+                                uppercase, lowercase, number, and special character.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mb-3">
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" (click)="userSignup()"
+                                [disabled]="signupForm.invalid">Sign up</button>
+                        </div>
+                    </div>
+
+                    <div class="text-center ">
+                        <p class="mb-0">Already have an account? <a
+                                [routerLink]="['']">Sign in here</a></p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="pace-done">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99"
+            style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+    <div class="wrapper">
+        <div class="section-authentication-cover">
+            <div class="">
+                <div class="row g-0">
+
+                    <div
+                        class="col-12 col-xl-7 col-xxl-8 auth-cover-left align-items-center justify-content-center d-xl-flex">
+
+                        <div class="card shadow-none bg-transparent shadow-none rounded-0 mb-0">
+                            <div class="card-body">
+                                <img src="https://codervent.com/rocker/demo/vertical/assets/images/login-images/register-cover.svg"
+                                    class="img-fluid auth-img-cover-login" width="500" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-xl-5 col-xxl-4 auth-cover-right align-items-center justify-content-center">
+                        <div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
+                            <div class="card-body p-sm-5">
+                                <div class="">
+                                    <div class="mb-3 text-center">
+                                        <img src="assets/images/logo-icon.png" width="60" alt="">
+                                    </div>
+                                    <div class="text-center mb-4">
+                                        <h5 class="">Mongoose Admin</h5>
+                                        <p class="mb-0">Please fill the below details to create your account</p>
+                                    </div>
+                                    <div class="form-body">
+                                        <form class="row g-3" [formGroup]="signupForm" (ngSubmit)="submit()">
+                                            <div class="col-12 form-group">
+                                                <label for="inputUsername" class="form-label">Username</label>
+                                                <input type="text" class="form-control" id="inputUsername"
+                                                    placeholder="enter username" formControlName="username">
+                                                <div *ngIf="f['username'].touched && f['username'].invalid"
+                                                    class="text-danger">
+                                                    <div *ngIf="f['username'].errors?.['required']">Username is
+                                                        required.</div>
+                                                    <div *ngIf="f['username'].errors?.['pattern']">Enter a valid
+                                                        username
+                                                        (alphanumeric and underscore only).</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 form-group">
+                                                <label for="inputEmailAddress" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="inputEmailAddress"
+                                                    placeholder="abc@example.com" formControlName="email">
+                                                <div *ngIf="f['email'].touched && f['email'].invalid"
+                                                    class="text-danger">
+                                                    <div *ngIf="f['email'].errors?.['pattern']">Please enter a valid
+                                                        email.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 form-group">
+                                                <label for="inputMobile" class="form-label">Mobile</label>
+                                                <input type="text" class="form-control" id="inputMobile"
+                                                    placeholder="9876543210" formControlName="mobileNumber"
+                                                    maxlength="10" (keypress)="onKeyPress($event)">
+                                                <div *ngIf="f['mobileNumber'].touched && f['mobileNumber'].invalid"
+                                                    class="text-danger">
+                                                    <div *ngIf="f['mobileNumber'].errors?.['pattern']">Please enter a
+                                                        valid mobile number.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="Password" class="form-label">Password</label>
+                                                <div class="input-group" id="show_hide_password">
+                                                    <input type="password" class="form-control border-end-0"
+                                                        id="Password" placeholder="Enter Password"
+                                                        formControlName="password"
+                                                        [type]="showPassword ? 'text' : 'password'">
+                                                    <a href="javascript:;" class="input-group-text bg-transparent"
+                                                        (click)="toggleShowPassword()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!showPassword"
+                                                            width="16" height="16" fill="currentColor"
+                                                            class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                                            <path
+                                                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" *ngIf="showPassword"
+                                                            width="16" height="16" fill="currentColor"
+                                                            class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588M5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
+                                                            <path
+                                                                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                                                        </svg>
+                                                    </a>
+                                                    <div *ngIf="f['password'].errors?.['invalidPassword'] !== null && (f['password'].touched ?? false)" class="text-danger">
+                                                        Password must contain at least 8 characters, including
+                                                        uppercase, lowercase, number, and special character.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="d-grid">
+                                                    <button type="submit" class="btn btn-primary"
+                                                        [disabled]="signupForm.invalid">Sign up</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="text-center ">
+                                                    <p class="mb-0">Already have an account? <a
+                                                            [routerLink]="['/login']">Sign in here</a></p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
